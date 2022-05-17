@@ -105,6 +105,7 @@ def register():
             new_user.password = hashed_salted_password
             db.session.add(new_user)
             db.session.commit()
+            login_user(new_user, remember=True)
             return redirect(url_for('get_all_posts'))
     return render_template("register.html", form=registration_form)
 
